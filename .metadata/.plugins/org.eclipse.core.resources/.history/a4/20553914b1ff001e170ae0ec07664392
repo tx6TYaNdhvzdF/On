@@ -1,0 +1,116 @@
+package XuLyTapTin;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+
+
+public class XuLyTapTin {
+	// Đọc dữ liệu từ file -> Tính tổng
+	public static void TinhTong(String FileName) {
+		FileReader fileReader = null;
+		BufferedReader bufferedReader = null;
+		try {
+			fileReader = new FileReader (FileName);
+			bufferedReader = new BufferedReader (fileReader);
+			String line = " ";
+			int tong = 0;
+			while (( line = bufferedReader.readLine()) != null ) {
+				tong += Integer.parseInt(line);
+			}
+			bufferedReader.close();
+			fileReader.close();
+			System.out.println("Tổng là: "+tong);
+			
+		}catch (IOException e ) {
+			System.out.println("Có lỗi xảy ra");
+		}
+	}
+	//Đọc dữ liệu từ file -> Tính tổng chẵn
+	public static void TinhTongChan(String FileName) {
+		FileReader fileReader = null;
+		BufferedReader bufferedReader = null;
+		try {
+			fileReader = new FileReader (FileName);
+			bufferedReader = new BufferedReader (fileReader);
+			String line = " ";
+			int tong = 0;
+			while (( line = bufferedReader.readLine()) != null ) {
+				int x = Integer.parseInt (line);
+				if( x % 2 == 0) {
+					tong += x;
+				}
+			}
+			bufferedReader.close();
+			fileReader.close();
+			System.out.println("Tổng chẳn là: "+tong);
+		}catch (IOException e) {
+			System.out.println("Có lỗi sảy ra");
+		}
+	}
+	//Đọc dữ liệu từ file -> tính tổng lẻ
+	public static void TinhTongLe(String FileName) {
+		FileReader fileReader = null;
+		BufferedReader bufferedReader = null;
+		try {
+			fileReader = new FileReader (FileName);
+			bufferedReader = new BufferedReader (fileReader);
+			String line = " ";
+			int tong = 0;
+			while (( line = bufferedReader.readLine()) != null ) {
+				int x = Integer.parseInt(line);
+				if ( x % 2 != 0) {
+					tong += x;
+				}
+			}
+			bufferedReader.close();
+			fileReader.close();
+			System.out.println("Tổng lẻ là: "+tong);
+		}catch (IOException e) {
+			System.out.println("Có lỗi sảy ra");
+		}
+	}
+	public static void main(String [] args) {
+		// TODO Auto-generated method stub
+		
+		String file = "data.txt";
+		TinhTong(file);
+		TinhTongChan(file);
+		TinhTongLe(file);
+			
+}
+	// Đọc dữ liệu từ file Json
+	public static void XuatDuLieuJson (String FileName) {
+		FileReader fileReader = null;
+		JSONParser parser = new JSONParser();
+		try {
+			fileReader = new FileReader (FileName);
+			Object obj = parser.parse(fileReader);
+			JSONObject jsonObject = (JSONObject)obj;
+			String MSSV = (String)jsonObject.get("MSSV");
+			String HoTen = (String)jsonObject.get("HoTen");
+			String Lop = (String)jsonObject.get("Lop");
+			String DiaChi = (String)jsonObject.get("DiaChi");
+			String Email = (String)jsonObject.get("Email");
+			
+			System.out.println("Ma SV: "+MSSV);
+			System.out.println("Ho Ten: "+HoTen);
+			System.out.println("Lop: "+Lop);
+			System.out.println("Dia Chi: "+DiaChi);
+			System.out.println("Email: "+Email);
+			
+		}catch (Exception e) {
+			e.printStackTrace(); //TODO: handle exception
+		}
+	}
+	public static void main1(String[] args) {
+		//TODO Auto-generated method stub
+		String file = "file1.json";
+		XuatDuLieuJson(file);
+		
+	}
+}

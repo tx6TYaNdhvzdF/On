@@ -1,0 +1,39 @@
+package XuLyTapTin;
+
+
+import java.io.FileReader;
+
+import org.json.simple.parser.JSONParser;
+
+public class Json {
+
+	public static void XuatDuLieuJson (String FileName) {
+		FileReader fileReader = null;
+		JSONParser parser = new JSONParser();
+		try {
+			fileReader = new FileReader (FileName);
+			Object obj = parser.parse(fileReader);
+			JSONObject jsonObject = (JSONObject)obj;
+			String MSSV = (String)jsonObject.get("MSSV");
+			String HoTen = (String)jsonObject.get("HoTen");
+			String Lop = (String)jsonObject.get("Lop");
+			String DiaChi = (String)jsonObject.get("DiaChi");
+			String Email = (String)jsonObject.get("Email");
+			
+			System.out.println("Ma SV: "+MSSV);
+			System.out.println("Ho Ten: "+HoTen);
+			System.out.println("Lop: "+Lop);
+			System.out.println("Dia Chi: "+DiaChi);
+			System.out.println("Email: "+Email);
+			
+		}catch (Exception e) {
+			e.printStackTrace(); //TODO: handle exception
+		}
+	}
+	public static void main(String[] args) {
+		//TODO Auto-generated method stub
+		String file = "file.json";
+		XuatDuLieuJson(file);
+		
+	}
+}

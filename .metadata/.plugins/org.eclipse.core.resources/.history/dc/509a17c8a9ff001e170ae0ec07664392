@@ -1,0 +1,82 @@
+package XuLyTapTin;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class XuLyTapTin {
+	// Đọc dữ liệu từ file -> Tính tổng
+	public static void TinhTong(String FileName) {
+		FileReader fileReader = null;
+		BufferedReader bufferedReader = null;
+		try {
+			fileReader = new FileReader (FileName);
+			bufferedReader = new BufferedReader (fileReader);
+			String line = " ";
+			int tong = 0;
+			while (( line = bufferedReader.readLine()) != null ) {
+				tong += Integer.parseInt(line);
+			}
+			bufferedReader.close();
+			fileReader.close();
+			System.out.println("Tổng là: "+tong);
+			
+		}catch (IOException e ) {
+			System.out.println("Có lỗi xảy ra");
+		}
+	}
+	//Đọc dữ liệu từ file -> Tính tổng chẵn
+	public static void TinhTongChan(String FileName) {
+		FileReader fileReader = null;
+		BufferedReader bufferedReader = null;
+		try {
+			fileReader = new FileReader (FileName);
+			bufferedReader = new BufferedReader (fileReader);
+			String line = " ";
+			int tong = 0;
+			while (( line = bufferedReader.readLine()) != null ) {
+				int x = Integer.parseInt (line);
+				if( x % 2 == 0) {
+					tong += x;
+				}
+			}
+			bufferedReader.close();
+			fileReader.close();
+			System.out.println("Tổng chẳn là: "+tong);
+		}catch (IOException e) {
+			System.out.println("Có lỗi sảy ra");
+		}
+	}
+	//Đọc dữ liệu từ file -> tính tổng lẻ
+	public static void TinhTongLe(String FileName) {
+		FileReader fileReader = null;
+		BufferedReader bufferedReader = null;
+		try {
+			fileReader = new FileReader (FileName);
+			bufferedReader = new BufferedReader (fileReader);
+			String line = " ";
+			int tong = 0;
+			while (( line = bufferedReader.readLine()) != null ) {
+				int x = Integer.parseInt(line);
+				if ( x % 2 != 0) {
+					tong += x;
+				}
+			}
+			bufferedReader.close();
+			fileReader.close();
+			System.out.println("Tổng lẻ là: "+tong);
+		}catch (IOException e) {
+			System.out.println("Có lỗi sảy ra");
+		}
+	}
+	public static void main(String [] args) {
+		// TODO Auto-generated method stub
+		
+		String file = "data.txt";
+		TinhTong(file);
+		TinhTongChan(file);
+		TinhTongLe(file);s
+			
+	}
+}

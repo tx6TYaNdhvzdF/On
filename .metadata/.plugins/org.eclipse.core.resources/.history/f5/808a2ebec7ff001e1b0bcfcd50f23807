@@ -1,0 +1,89 @@
+package Mang1Chieu;
+
+import java.util.Scanner;
+
+public class Mang1Chieu {
+	
+	public static Scanner input = new Scanner (System.in);
+	// Khai báo và định nghĩa hàm nhập mảng
+	public static void NhapMang (int[] arr, int n) {
+		System.out.println("\n\t-----NHẬP MẢNG-------\n");
+		for (int i = 0; i < n; i++) {
+			System.out.println ("Nhập phần tử thứ "+ (i+1)+": ");
+			int x = input.nextInt ();
+			arr[i] = x;
+			
+		}
+	}
+	
+	// Khai báo và định nghĩa hàm xuất mảng
+	public static void XuatMang(int[] arr, int n) {
+		System.out.println("\n\t-----MẢNG LÀ-------\n");
+		for (int i = 0; i < n; i++) {
+			System.out.println("Phần tử thứ "+(i+1)+": "+arr[i]);
+		}
+	}
+	// Khai báo và định nghĩa tính tổng mảng
+	public static void TongMang(int[] arr, int n) {
+		int tong = 0;
+		System.out.println("\n\t-----TÍNH TỔNG CÁC PHẦN TỬ CỦA MẢNG-------\n");
+		for( int i = 0; i < n; i++) {
+			tong += arr[i];
+		}
+		System.out.println("Tổng là: "+tong);
+	}
+	//Khai báo và định nghĩa xuất phần từ chẳn
+	public static void XuatPhanTuChan(int[] arr, int n) {
+		System.out.println("\n\t-----CÁC PHẦN TỬ CHẲN CỦA MẢNG-------\n");
+		for (int i = 0; i < n; i++) {
+			if ( arr[i] % 2 == 0) {
+				System.out.println("Phần tử thứ: "+(i+1)+": "+arr[i]);
+			}
+		}
+	}
+	//Khai báo và định nghĩa xuất phần tử lẻ
+	public static void XuatPhanTuLe(int[] arr, int n) {
+		System.out.println("\n\t-----CÁC PHẦN TỬ LẺ CỦA MẢNG-------\n");
+		for ( int i = 0; i < n; i++) {
+			if ( arr[i] % 2 != 0 ) {
+				System.out.println("Phần tử thứ: "+(i+1)+": "+arr[i]);
+			}
+		}
+	}
+	
+	public static void XuatLeChan(int[] arr, int n) {
+		System.out.println("\n\t-----CÁC PHẦN TỬ CHẲN VÀ LẺ CỦA MẢNG-------\n");
+		int tong =0;
+		for ( int i = 0; i < n; i++) {
+			if ( arr[i] % 2 != 0 ) {
+				System.out.println("Phần tử lẻ thứ: "+(i+1)+": "+arr[i]);
+			}
+			if ( arr[i] % 2 == 0 ) {
+				System.out.println("Phần tử chẵn thứ: "+(i+1)+": "+arr[i]);
+			}
+			tong +=arr[i];
+			
+		}
+		System.out.println("Tổng là: "+tong);
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int n;
+		System.out.println("Nhập số lượng phần tử: ");
+		n = input.nextInt();
+		int[] arr = new int[n];
+		//Lời gọi hàm
+		NhapMang(arr,n);
+		XuatMang(arr,n);
+		TongMang(arr,n);
+		XuatPhanTuChan(arr, n);
+		XuatPhanTuLe(arr, n);
+	
+	}
+
+}
